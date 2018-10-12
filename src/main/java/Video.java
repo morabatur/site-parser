@@ -1,3 +1,6 @@
+/**
+ * POJO клас
+ */
 public class Video {
     private String name;
     private String link;
