@@ -1,3 +1,8 @@
+package com.chernish.file.loader;
+
+import com.chernish.entity.Video;
+import com.chernish.entity.VideoHelper;
+
 import java.io.IOException;
 import java.io.InputStream;
 

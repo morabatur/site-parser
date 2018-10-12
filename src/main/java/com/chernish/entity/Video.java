@@ -1,3 +1,5 @@
+package com.chernish.entity;
+
 /**
  * POJO клас
  */

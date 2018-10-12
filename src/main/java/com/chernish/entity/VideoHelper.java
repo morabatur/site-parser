@@ -1,3 +1,5 @@
+package com.chernish.entity;
+
 import java.util.LinkedList;
 
 public class VideoHelper {

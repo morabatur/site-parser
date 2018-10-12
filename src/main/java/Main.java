@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        HTMLParser parser = new HTMLParser();
+//        com.chernish.parser.HTMLParser parser = new com.chernish.parser.HTMLParser();
 //        try {
 //            parser.getVideoName();
 //        } catch (IOException e) {
