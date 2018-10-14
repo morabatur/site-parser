@@ -11,8 +11,8 @@ public class Saver {
      * @param stream, directoryOfSave
      * @param directoryOfSave
      */
-    public void save(InputStream stream, String directoryOfSave, String fileName) {
-        try (FileOutputStream fos = new FileOutputStream(directoryOfSave + "\\" + fileName)) {
+    public void save(InputStream stream, String directoryOfSave, String fileName, String fileExtension) {
+        try (FileOutputStream fos = new FileOutputStream(directoryOfSave + "\\" + fileName + "." +  fileExtension)) {
             fos.write(stream.readAllBytes());
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
