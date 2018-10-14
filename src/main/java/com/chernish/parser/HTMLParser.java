@@ -18,28 +18,56 @@ public class HTMLParser {
 
     /**
      * Метод парсить документ HTML та повертає з нього посилання на необхідне відео
-     * @return
-     * @throws IOException
+     *
+     * @return elem
      */
-    public String getVideoLink() throws IOException {
+    public String getVideoLink() {
         String elem = document.getElementById("video_html5_api").attr("src");
         return elem;
     }
 
     /**
      * Метод парсить документ HTML та повертає з нього назву відео
-     * @return
-     * @throws IOException
+     *
+     * @return name
      */
-    public String getVideoName() throws IOException {
-        String name = null;
-        Elements elements = document.getElementsByClass("video-lesson-content");
-        for (Element element : elements) {
-            name = element.getElementsByTag("h1").first().text();
+    public String getVideoName() {
+        String name = getVideoNameFromHTML("h1");
 
+        boolean videoNameStatus = checkVideoName(name);
+        if (videoNameStatus) {
+            return name;
+        } else {
+            name = getVideoNameFromHTML("h2");
+            return name;
         }
-        return name;
+
     }
 
+
+    private boolean checkVideoName(String name) {
+        if (name == null || name.equals("")) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+
+    private String getVideoNameFromHTML(String titleLevel) {
+        String name = null;
+        try {
+            Elements elements = document.getElementsByClass("video-lesson-content");
+            for (Element element : elements) {
+                name = element.getElementsByTag(titleLevel).first().text();
+
+            }
+        } catch (NullPointerException nullExceprion) {
+            nullExceprion.printStackTrace();
+        }
+
+        return name;
+    }
 
 }
