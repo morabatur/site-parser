@@ -101,6 +101,10 @@ public class HTMLParser {
         return listLinks;
     }
 
+    /**
+     * Отримує назву сторінки
+     * @return documentTitle
+     */
     public String getTitlePage(){
         return document.title();
 
