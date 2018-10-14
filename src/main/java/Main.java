@@ -9,8 +9,9 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        FolderParser folderParser = new FolderParser("C:\\Users\\Roman Chernish\\IdeaProjects\\Parser_ITVDN\\src\\main\\resources\\target", ".html");
-        VideoHelper videoHelper = new VideoHelper(folderParser);
+        FolderParser mainFolderParser = new FolderParser("C:\\Users\\Roman Chernish\\IdeaProjects\\Parser_ITVDN\\src\\main\\resources\\target", ".html");
+        FolderParser subFolderParser = new FolderParser("C:\\Users\\Roman Chernish\\IdeaProjects\\Parser_ITVDN\\src\\main\\resources\\target", ".html");
+        VideoHelper videoHelper = new VideoHelper(mainFolderParser);
         Saver saver = new Saver();
         Downloader downloader = new Downloader();
         DownloadMaster downloadMaster = new DownloadMaster(saver, downloader, "C:\\Users\\Roman Chernish\\IdeaProjects\\Parser_ITVDN\\src\\main\\resources\\video");
@@ -18,7 +19,8 @@ public class Main {
         Application app = new Application(videoHelper, downloadMaster);
 
         try {
-            app.start();
+            // app.startDownloadVideos();
+            app.startParsingPages(subFolderParser);
         } catch (IOException e) {
             e.printStackTrace();
         }
