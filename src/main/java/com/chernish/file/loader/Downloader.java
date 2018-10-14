@@ -10,7 +10,7 @@ public class Downloader {
     /**
      * Метод дозволяє отримати InputStream для файлу, що знаходиться в мережі за заданим посиланням
      * @param link
-     * @return
+     * @return stream
      * @throws IOException
      */
     public InputStream download(String link) throws IOException {

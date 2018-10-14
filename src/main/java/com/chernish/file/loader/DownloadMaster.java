@@ -19,6 +19,7 @@ public class DownloadMaster {
 
     /**
      * Метод зберігає файл відео у відповідній диркеторії
+     * @param videosListParam
      * @throws IOException
      */
     public void downloadVideos(List<Video> videosListParam) throws IOException {
