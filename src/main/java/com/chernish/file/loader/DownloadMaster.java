@@ -1,34 +1,33 @@
 package com.chernish.file.loader;
 
 import com.chernish.entity.Video;
-import com.chernish.entity.VideoHelper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class DownloadMaster {
     private Saver saver;
     private Downloader downloader;
-    private VideoHelper videoHelper;
-    private static String saveFolder = "D:\\";
+    private String saveFolder;
 
-    public DownloadMaster(Saver saver, Downloader downloader, VideoHelper videoHelper) {
+    public DownloadMaster(Saver saver, Downloader downloader, String saveFolder) {
         this.saver = saver;
         this.downloader = downloader;
-        this.videoHelper = videoHelper;
+        this.saveFolder = saveFolder;
     }
 
     /**
      * Метод зберігає файл відео у відповідній диркеторії
      * @throws IOException
      */
-    public void downloadVideos() throws IOException {
-
-        for (Video video : videoHelper.getVideoList()) {
+    public void downloadVideos(List<Video> videosListParam) throws IOException {
+        String format = "mp4";
+        for (Video video : videosListParam) {
             String link = video.getLink();
             String name = video.getName();
             InputStream tempInputStream = downloader.download(link);
-            saver.save(tempInputStream, saveFolder, name);
+            saver.save(tempInputStream, saveFolder, name, format);
         }
 
 
