@@ -7,6 +7,8 @@ import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HTMLParser {
@@ -45,6 +47,11 @@ public class HTMLParser {
     }
 
 
+    /**
+     * Метод перівряє чи дійснао була отримана не пуста назва
+     * @param name
+     * @return
+     */
     private boolean checkVideoName(String name) {
         if (name == null || name.equals("")) {
             return false;
@@ -54,7 +61,11 @@ public class HTMLParser {
 
     }
 
-
+    /**
+     * Метод повертає назву відео залежно від того в якому елементі вона знаходиться
+     * @param titleLevel
+     * @return
+     */
     private String getVideoNameFromHTML(String titleLevel) {
         String name = null;
         try {
@@ -68,6 +79,21 @@ public class HTMLParser {
         }
 
         return name;
+    }
+
+    /**
+     * Метод отримує список всіх посилань на відео з курсу
+     * @return
+     */
+    public List<String> getListLinksFromCoursePage(){
+        List<String> listLinks =  new ArrayList<>();
+        Elements elementsByClass = document.getElementsByClass("video-lesson-item");
+        for (Element element : elementsByClass.tagName("a")) {
+            // System.out.println(element.text()); //отримує назву відео
+            String videoLink = element.getElementsByTag("a").get(1).attr("href");
+            listLinks.add(videoLink);
+        }
+        return listLinks;
     }
 
 }
