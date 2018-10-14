@@ -11,7 +11,7 @@ public class FolderParser {
 
     public FolderParser(String folderPath, String fileExtension) {
         this.folderPath = folderPath;
-        this.fileExtension = "." + fileExtension;
+        this.fileExtension = fileExtension;
     }
 
     /**
