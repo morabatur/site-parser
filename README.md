@@ -1,2 +1,2 @@
 # site-parser
-URL Opener — открыть список ссылок одновременно
+http://www.apsolyamov.ru/files/url_opener.html - URL Opener — открыть список ссылок одновременно
