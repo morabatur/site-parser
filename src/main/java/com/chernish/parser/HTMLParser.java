@@ -49,6 +49,7 @@ public class HTMLParser {
 
     /**
      * Метод перівряє чи дійснао була отримана не пуста назва
+     *
      * @param name
      * @return
      */
@@ -63,6 +64,7 @@ public class HTMLParser {
 
     /**
      * Метод повертає назву відео залежно від того в якому елементі вона знаходиться
+     *
      * @param titleLevel
      * @return
      */
@@ -83,17 +85,25 @@ public class HTMLParser {
 
     /**
      * Метод отримує список всіх посилань на відео з курсу
+     *
      * @return
      */
-    public List<String> getListLinksFromCoursePage(){
-        List<String> listLinks =  new ArrayList<>();
+    public List<String> getListLinksFromCoursePage() {
+        List<String> listLinks = new ArrayList<>();
         Elements elementsByClass = document.getElementsByClass("video-lesson-item");
         for (Element element : elementsByClass.tagName("a")) {
             // System.out.println(element.text()); //отримує назву відео
-            String videoLink = element.getElementsByTag("a").get(1).attr("href");
-            listLinks.add(videoLink);
+            String nonFullLink = element.getElementsByTag("a").get(1).attr("href");
+            String site = "https://itvdn.com";
+            String fullLink = site + nonFullLink + "\n";
+            listLinks.add(fullLink);
         }
         return listLinks;
+    }
+
+    public String getTitlePage(){
+        return document.title();
+
     }
 
 }
